@@ -167,7 +167,8 @@ dados: {
                 torre: [!1, 0],
                 igrejaPrincipal: [!1, 0],
                 igreja: [!1, 0],
-                muralha: [!1, 0]
+                muralha: [!1, 0],
+                farm: [!1, 1]
             }
         }
     },
@@ -214,7 +215,7 @@ initDadosScript: function() {
     }))), $("#attack_spy_buildings_left > tbody > tr:nth-child(1) > th:nth-child(1)").length && (this.dados.aldeia.defensiva.edificios.edificiosVisiveis = !0, $("table[id^='attack_spy_buildings_'] > tbody > tr:gt(0) > td > img").each((function(e, i) {
         var s = i.src.split("/")[7].replace(".png", ""),
             t = parseInt(i.parentNode.parentNode.childNodes[3].textContent);
-        "watchtower" == s ? a.dados.aldeia.defensiva.edificios.torre = [!0, t] : "church_f" == s ? a.dados.aldeia.defensiva.edificios.igrejaPrincipal = [!0, t] : "church" == s ? a.dados.aldeia.defensiva.edificios.igreja = [!0, t] : "wall" == s && (a.dados.aldeia.defensiva.edificios.muralha = [!0, t])
+        "watchtower" == s ? a.dados.aldeia.defensiva.edificios.torre = [!0, t] : "church_f" == s ? a.dados.aldeia.defensiva.edificios.igrejaPrincipal = [!0, t] : "church" == s ? a.dados.aldeia.defensiva.edificios.igreja = [!0, t] : "wall" == s ? a.dados.aldeia.defensiva.edificios.muralha = [!0, t] : "farm" == s && (a.dados.aldeia.defensiva.edificios.farm = [!0, t])
     })))
 },
 getTipoAldeia: function() {
@@ -224,7 +225,7 @@ geraTextoNota: function() {
     var a, e = $("#report_export_code").text(),
         i = $("#content_value > table > tbody > tr > td:nth-child(2) > table > tbody > tr > td > table:nth-child(2) > tbody > tr:nth-child(2)").text().replace(/\s+/g, " ").replace(/.{5}$/g, ""),
         s = "";
-    return (this.dados.player.playerEstaAtacar || this.dados.player.playerQuerInfoDefensor) && (a = this.dados.aldeia.defensiva.tipoAldeia), this.dados.player.playerEstaAtacar && !this.dados.player.playerQuerInfoAtacante || (a = this.dados.aldeia.ofensiva.tipoAldeia), !this.dados.player.playerEstaAtacar && this.dados.player.playerQuerInfoDefensor && (a = this.dados.aldeia.defensiva.tipoAldeia), s += " | [color=#" + (a == _t("offensive") || a == _t("probOffensive") ? "ff0000" : "0eae0e") + "][b]" + a + "[/b][/color] | ", (this.dados.player.playerEstaAtacar || this.dados.player.playerQuerInfoDefensor) && (this.dados.aldeia.defensiva.edificios.torre[0] && (s += "[building]watchtower[/building] " + _t("watchtower") + this.dados.aldeia.defensiva.edificios.torre[1] + " | "), this.dados.aldeia.defensiva.edificios.muralha[0] && (s += "[building]wall[/building][color=#5c3600][b] " + _t("wall") + this.dados.aldeia.defensiva.edificios.muralha[1] + "[/b][/color] | "), this.dados.aldeia.defensiva.edificios.igrejaPrincipal[0] && (s += "[building]church_f[/building] " + _t("firstChurch") + " | "), this.dados.aldeia.defensiva.edificios.igreja[0] && (s += "[building]church_f[/building] " + _t("church") + this.dados.aldeia.defensiva.edificios.igreja[1] + " | "), this.dados.aldeia.defensiva.tropas.visiveis && a != _t("offensive") && a != _t("probOffensive") && (s += this.dados.aldeia.defensiva.tropas.apoios + _t("defensiveNukes") + " | ")), s += "[b][size=6]xD[/size][/b]", s += "\n\n[b]" + i + "[/b]", s += "" + e
+    return (this.dados.player.playerEstaAtacar || this.dados.player.playerQuerInfoDefensor) && (a = this.dados.aldeia.defensiva.tipoAldeia), this.dados.player.playerEstaAtacar && !this.dados.player.playerQuerInfoAtacante || (a = this.dados.aldeia.ofensiva.tipoAldeia), !this.dados.player.playerEstaAtacar && this.dados.player.playerQuerInfoDefensor && (a = this.dados.aldeia.defensiva.tipoAldeia), s += " | [color=#" + (a == _t("offensive") || a == _t("probOffensive") ? "ff0000" : "0eae0e") + "][b]" + a + "[/b][/color] | ", (this.dados.player.playerEstaAtacar || this.dados.player.playerQuerInfoDefensor) && (this.dados.aldeia.defensiva.edificios.torre[0] && (s += "[building]watchtower[/building] " + _t("watchtower") + this.dados.aldeia.defensiva.edificios.torre[1] + " | "), this.dados.aldeia.defensiva.edificios.muralha[0] && (s += "[building]wall[/building][color=#5c3600][b] " + _t("wall") + this.dados.aldeia.defensiva.edificios.muralha[1] + "[/b][/color] | "), this.dados.aldeia.defensiva.edificios.farm[0] && (s += "[building]farm[/building][color=#5c3600][b] " + _t("farm") + this.dados.aldeia.defensiva.edificios.farm[1] + "[/b][/color] | "), this.dados.aldeia.defensiva.edificios.igrejaPrincipal[0] && (s += "[building]church_f[/building] " + _t("firstChurch") + " | "), this.dados.aldeia.defensiva.edificios.igreja[0] && (s += "[building]church_f[/building] " + _t("church") + this.dados.aldeia.defensiva.edificios.igreja[1] + " | "), this.dados.aldeia.defensiva.tropas.visiveis && a != _t("offensive") && a != _t("probOffensive") && (s += this.dados.aldeia.defensiva.tropas.apoios + _t("defensiveNukes") + " | ")), s += "[b][size=6]xD[/size][/b]", s += "\n\n[b]" + i + "[/b]", s += "" + e
 },
 escreveNota: function() {
     var a, e, i = this,
