@@ -64,7 +64,7 @@ translations = {
     cs_CZ: {
         unknown: "Nezjištěno",
         verifyReportPage: "Tento skript lze spustit pouze na oznámení.",
-        offensive: "OFFENSIVE",
+        offensive: "OFF",
         defensive: "DEF",
         probOffensive: "Pravděpodobně OFF",
         probDefensive: "Pravděpodobně DEF",
